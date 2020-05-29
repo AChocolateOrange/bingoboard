@@ -1,1 +1,15 @@
-<h1>Placeholder Text</h1>
+<html>
+  <head>
+   <script type="text/javascript">
+      window.onload = setupRefresh;
+
+      function setupRefresh() {
+          setInterval("refreshFrame();", 1000);
+      }
+      function refreshFrame() {
+         parent.board.location.reload();
+      }
+  </script>
+  </head>
+  <img name="board" src="board.png">
+</html>
