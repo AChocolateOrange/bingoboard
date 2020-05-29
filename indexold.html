@@ -1,0 +1,36 @@
+<html>
+  <head>
+   <script type="text/javascript">
+      window.onload = setupRefresh;
+      var x = 0;
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'count.html');
+
+      xhr.onload = function () {
+        x = parseInt(xhr.responseText);
+      };
+
+      xhr.send();
+
+      function setupRefresh() {
+          setInterval("refreshFrame();", 1000);
+      }
+      function refreshFrame() {
+          xhr = new XMLHttpRequest();
+          xhr.open('GET', 'count.html');
+          xhr.onload = function () {
+            if(parseInt(xhr.responseText)>x) {
+              x++;
+              parent.board.location.reload();
+            }
+            if((parseInt(xhr.responseText)==0)&&(x!=0)) {
+              x = 0;
+              parent.board.location.reload();
+            }
+          }
+          xhr.send();
+      }
+  </script>
+  </head>
+  <iframe name="board" src="image.html" width="100%" height="100%" style="border:none;"></iframe>
+</html>
