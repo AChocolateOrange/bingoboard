@@ -23,7 +23,7 @@
               x++;
               parent.board.location.reload();
             }
-            if(parseInt(xhr.responseText)==0) {
+            if((parseInt(xhr.responseText)==0)&&(x!=0)) {
               x = 0;
               parent.board.location.reload();
             }
