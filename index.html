@@ -1,15 +1,16 @@
-<html>
-  <head>
-   <script type="text/javascript">
-      window.onload = setupRefresh;
-
-      function setupRefresh() {
-          setInterval("refreshFrame();", 1000);
-      }
-      function refreshFrame() {
-         parent.board.location.reload();
-      }
+<script type="text/javascript">
+    window.onload = setupRefresh;
+    function setupRefresh()
+    {
+        setInterval("refreshBlock();",1000);
+    }
+    
+    function refreshBlock()
+    {
+       $('#block1').load("board.png");
+    }
   </script>
-  </head>
-  <img name="board" src="board.png">
-</html>
+
+  <body>  
+            <div id="block1"></div>
+  </body>
