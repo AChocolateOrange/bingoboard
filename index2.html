@@ -24,7 +24,7 @@
           xhr = new XMLHttpRequest();
           xhr.open('GET', 'https://cors-anywhere.herokuapp.com/https://pastebin.com/raw/wvUxSqe6');
           xhr.onload = function () {
-            if(!(_div.innerHTML.equals(xhr.responseText))) {
+            if(_div.innerHTML!=xhr.responseText) {
               _div.innerHTML = xhr.responseText;
             }
           }
