@@ -2,35 +2,34 @@
   <head>
    <script type="text/javascript">
       window.onload = setupRefresh;
-      var x = 0;
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'count.html');
-
-      xhr.onload = function () {
-        x = parseInt(xhr.responseText);
-      };
-
-      xhr.send();
-
-      function setupRefresh() {
-          setInterval("refreshFrame();", 1000);
+      function httpGet(theUrl) {
+        if (window.XMLHttpRequest) {
+          xmlhttp=new XMLHttpRequest();
+        }
+        else {
+           xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+              createDiv(xmlhttp.responseText);
+            }
+        }
+        xmlhttp.open("GET", theUrl, false);
+        xmlhttp.send();    
       }
-      function refreshFrame() {
-          xhr = new XMLHttpRequest();
-          xhr.open('GET', 'count.html');
-          xhr.onload = function () {
-            if(parseInt(xhr.responseText)>x) {
-              x++;
-              setTimeout(() => { parent.board.location.reload(); }, 5000);
-            }
-            if((parseInt(xhr.responseText)==0)&&(x!=0)) {
-              x = 0;
-              setTimeout(() => { parent.board.location.reload(); }, 5000);
-            }
-          }
-          xhr.send();
+      function updateImage(responsetext) {
+        var _div = document.getElementById("imagediv");
+        if(!(_div.innerHTML.equals(responsetext))) {
+          _div.innerHTML = responsetext;
+        }
+      }
+      function setupRefresh() {
+          setInterval("httpGet(\"https://pastebin.com/raw/wvUxSqe6\");", 1000);
       }
   </script>
   </head>
-  <iframe name="board" src="image.html" width="100%" height="100%" style="border:none;"></iframe>
+  <body>
+    <div id="imagediv">
+    </div>
+  </body>
 </html>
