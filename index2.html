@@ -6,11 +6,10 @@
     </div>
     <script type="text/javascript">
       window.onload = setupRefresh;
-      var x = 0;
       var xhr = new XMLHttpRequest();
       var _div = document.getElementById('imagediv');
       _div.innerHTML = "Loading board...";
-      xhr.open('GET', 'https://pastebin.com/raw/wvUxSqe6');
+      xhr.open('GET', 'https://cors-anywhere.herokuapp.com/https://pastebin.com/raw/wvUxSqe6');
 
       xhr.onload = function () {
         _div.innerHTML = xhr.responseText;
@@ -19,11 +18,11 @@
       xhr.send();
 
       function setupRefresh() {
-          setInterval("refreshFrame();", 1000);
+          setInterval("refreshFrame();", 5000);
       }
       function refreshFrame() {
           xhr = new XMLHttpRequest();
-          xhr.open('GET', 'https://pastebin.com/raw/wvUxSqe6');
+          xhr.open('GET', 'https://cors-anywhere.herokuapp.com/https://pastebin.com/raw/wvUxSqe6');
           xhr.onload = function () {
             if(!(_div.innerHTML.equals(xhr.responseText))) {
               _div.innerHTML = xhr.responseText;
