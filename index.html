@@ -11,7 +11,7 @@
         }
         xmlhttp.onreadystatechange=function() {
             if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-              createDiv(xmlhttp.responseText);
+              updateImage(xmlhttp.responseText);
             }
         }
         xmlhttp.open("GET", theUrl, false);
@@ -29,7 +29,7 @@
   </script>
   </head>
   <body>
-    <div id="imagediv">
+    <div id="imagediv">Loading board...
     </div>
   </body>
 </html>
