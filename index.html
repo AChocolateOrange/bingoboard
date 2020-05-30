@@ -21,11 +21,11 @@
           xhr.onload = function () {
             if(parseInt(xhr.responseText)>x) {
               x++;
-              parent.board.location.reload();
+              setTimeout(() => { parent.board.location.reload(); }, 5000);
             }
             if((parseInt(xhr.responseText)==0)&&(x!=0)) {
               x = 0;
-              parent.board.location.reload();
+              setTimeout(() => { parent.board.location.reload(); }, 5000);
             }
           }
           xhr.send();
